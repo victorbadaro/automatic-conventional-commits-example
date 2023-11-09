@@ -57,6 +57,7 @@ git commit -m "some new message" # ❌ this will fail
 git commit -m "foo: some new message" # ❌ this will fail
 git commit -m "feat: some new message" # ✅ this won't fail
 ```
+![image](https://github.com/victorbadaro/automatic-conventional-commits-example/assets/9096344/20cd75a6-9f71-49fd-930d-6faf0b0c6a0d)
 
 ### Add interactivity to your `git commit` command
 1. Install [commitizen](https://github.com/commitizen/cz-cli):
@@ -75,3 +76,4 @@ git commit -m "feat: some new message" # ✅ this won't fail
     ```bash
     npx husky add .husky/prepare-commit-msg  'exec < /dev/tty && node_modules/.bin/cz --hook || true'
     ```
+https://github-production-user-asset-6210df.s3.amazonaws.com/9096344/281865977-82a54c18-9dd3-4a42-af80-056a0631fa61.mp4
