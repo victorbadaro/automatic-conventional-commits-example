@@ -4,5 +4,10 @@
   "main": "index.js",
   "repository": "git@github.com:victorbadaro/automatic-conventional-commits-example.git",
   "author": "Victor Badaró <victor.badaro@fatec.sp.gov.br>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
+    "husky": "^8.0.3"
+  }
 }
