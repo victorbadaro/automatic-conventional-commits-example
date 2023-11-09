@@ -1,41 +1,77 @@
 # automatic-conventional-commits-example
-An example of how to set a repo to use conventional commits automatically
+This repository serves as an example for implementing automatic [conventional commits](https://www.conventionalcommits.org/) in a project. It demonstrates how to streamline the commit message formatting and structure for better readability and automated versioning.
 
-1. Create a `package.json` file:
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+1. You have created a `package.json` file for your project. If you haven't created one, you can initialize a new `package.json` file using one of the following commands:
     ```bash
+    npm init -y
+    # or
     yarn init -y
     ```
----
-2. Install the [commitlint](https://github.com/conventional-changelog/commitlint) dependencies:
+2. You have Git installed. If not, you can download it [here](https://git-scm.com/downloads).
+3. You have initialized a local Git repository. If you haven't initialized a Git repository yet, you can do so by executing the following command in your project directory:
     ```bash
+    git init
+    ```
+
+## Configuration
+You can adhere to a commit convention and also (if you want) add interactivity to your `git commit` command.
+
+### Adhere to a commit convention
+Here, you're gonna need some dependencies ([commitlint](https://github.com/conventional-changelog/commitlint) and [husky](https://github.com/typicode/husky)), set them up and add the `commit-msg` [hook](https://git-scm.com/docs/githooks#_commit_msg).
+
+1. Install the commitlint dependencies:
+    ```bash
+    npm install -D @commitlint/config-conventional @commitlint/cli
+    # or
     yarn add -D @commitlint/config-conventional @commitlint/cli
     ```
-3. Configure commitlint to use conventional config:
+2. Configure commitlint to use conventional config:
     ```bash
     echo "module.exports = { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
     ```
-4. Install [husky](https://github.com/typicode/husky):
+3. Install husky:
     ```bash
+    npm install -D husky
+    # or
     yarn add -D husky
     ```
-5. Activate [git hooks](https://git-scm.com/docs/githooks):
+4. Activate [git hooks](https://git-scm.com/docs/githooks):
     ```bash
+    npx husky install
+    # or
     yarn husky install
     ```
-6. Add the `commit-msg` [hook](https://git-scm.com/docs/githooks#_commit_msg):
+5. Add the `commit-msg` hook:
     ```bash
     npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'
     ```
----
-7. Install [commitizen](https://github.com/commitizen/cz-cli):
+
+If you're facing any configuration errors, check the [commitlint guide](https://commitlint.js.org/#/guides-local-setup).<br/>
+It's done! Now you can try to commit some new changes (you might want to check the conventional commits specification [here](https://www.conventionalcommits.org/)):
+```bash
+git commit -m "some new message" # ❌ this will fail
+git commit -m "foo: some new message" # ❌ this will fail
+git commit -m "feat: some new message" # ✅ this won't fail
+```
+
+### Add interactivity to your `git commit` command
+1. Install [commitizen](https://github.com/commitizen/cz-cli):
     ```bash
+    npm install -D commitizen
+    # or
     yarn add -D commitizen
     ```
-8. Make your repo Commitizen friendly:
+2. Make your repo commitizen friendly:
     ```bash
+    npx commitizen init cz-conventional-changelog --save-dev --save-exact
+    # or
     yarn commitizen init cz-conventional-changelog --yarn --dev --exact
     ```
-9. Add the `prepare-commit-msg` [hook](https://git-scm.com/docs/githooks#_prepare_commit_msg):
+3. Add the `prepare-commit-msg` [hook](https://git-scm.com/docs/githooks#_prepare_commit_msg):
     ```bash
     npx husky add .husky/prepare-commit-msg  'exec < /dev/tty && node_modules/.bin/cz --hook || true'
     ```
