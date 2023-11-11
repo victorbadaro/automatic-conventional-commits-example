@@ -1,6 +1,6 @@
 # automatic-conventional-commits-example
-![image](https://img.shields.io/badge/EN-blue?link=.%2FREADME.md)
-![image](https://img.shields.io/badge/PT-blue?link=.%2FLEIAME.md)
+[![image](https://img.shields.io/badge/EN-blue)](./README.md)
+[![image](https://img.shields.io/badge/PT-blue)](./LEIAME.md)
 
 Este repositório serve como um exemplo para implementar o [conventional commits](https://www.conventionalcommits.org/) automaticamente em um projeto. Ele demonstra como otimizar a formatação e estrutura das mensagens de commit para uma melhor legibilidade e versionamento automatizado.
 
@@ -52,6 +52,12 @@ Aqui, você precisará de algumas dependências ([commitlint](https://github.com
     ```bash
     npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'
     ```
+Se você não quiser executar o passo 4 (`npx husky install` ou `yarn husky install`) toda vez que clonar o seu repositório, inclua o script `prepare` no seu `package.json` e ele será executado automaticamente toda vez que você executar o comando para instalar as dependências do seu projeto (por exemplo: `npm install` ou `yarn`):
+```json
+"scripts": {
+  "prepare": "husky install" 
+}
+```
 
 Se você estiver enfrentando algum erro de configuração, verifique o [guia do commitlint](https://commitlint.js.org/#/guides-local-setup).<br/>
 Está pronto! Agora você pode tentar commitar algumas novas alterações (você pode querer verificar a especificação do _conventional commits_ [aqui](https://www.conventionalcommits.org/)):
