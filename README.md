@@ -1,4 +1,7 @@
 # automatic-conventional-commits-example
+![image](https://img.shields.io/badge/EN-blue?link=.%2FREADME.md)
+![image](https://img.shields.io/badge/PT-blue?link=.%2FLEIAME.md)
+
 This repository serves as an example for implementing automatic [conventional commits](https://www.conventionalcommits.org/) in a project. It demonstrates how to streamline the commit message formatting and structure for better readability and automated versioning.
 
 ## Prerequisites
